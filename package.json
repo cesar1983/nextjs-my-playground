@@ -5,11 +5,21 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "export": "next build && next export",
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "next": "9.5.3",
+    "next-seo": "^4.7.3",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-query": "^2.18.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^9.5.3",
+    "cross-env": "^7.0.2"
   }
 }
