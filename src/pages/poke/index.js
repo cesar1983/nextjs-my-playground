@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
+import styled from "styled-components";
+
+const Title = styled.h1`
+  font-size: 50px;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+
 const Poke = ({ poke }) => {
   const router = useRouter();
 
@@ -11,7 +18,7 @@ const Poke = ({ poke }) => {
 
   const pokeHtml = (
     <div>
-      <h1>Poke Info</h1>
+      <Title>Poke Info</Title>
       <dl>
         <dd>Name</dd>
         <dd>{poke?.name}</dd>

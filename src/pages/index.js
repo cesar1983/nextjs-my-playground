@@ -30,6 +30,12 @@ export default function Home() {
               <h3>BLOG</h3>
             </a>
           </MyLink>
+
+          <MyLink href="contact">
+            <a className={styles.card}>
+              <h3>Contact</h3>
+            </a>
+          </MyLink>
         </div>
       </main>
 
