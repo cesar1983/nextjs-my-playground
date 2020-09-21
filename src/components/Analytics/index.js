@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 /* As browser does not refresh with next... react.... 
           you need a "history change trigger" set up in Google Tag Manager. 
@@ -22,10 +22,10 @@ const Analytics = () => (
             gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING}', {
               page_path: window.location.pathname,
             });
-          `,
+          `
       }}
     />
   </>
-);
+)
 
-export default Analytics;
+export default Analytics

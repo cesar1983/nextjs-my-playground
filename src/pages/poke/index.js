@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 
-import styled from "styled-components";
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`;
+import * as S from './styles.js'
 
 const Poke = ({ poke }) => {
-  const router = useRouter();
+  const [pokes, setPokes] = useState([])
+
+  const router = useRouter()
 
   const handleClick = (e) => {
-    e.preventDefault();
-    router.push("/");
-  };
+    e.preventDefault()
+    router.push('/')
+  }
+
+  const getAllPoke = async () => {
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon')
+    let pokes = response.json()
+    setPokes(pokes)
+  }
 
   const pokeHtml = (
     <div>
-      <Title>Poke Info</Title>
+      <S.Title>Poke Info</S.Title>
       <dl>
         <dd>Name</dd>
         <dd>{poke?.name}</dd>
@@ -31,28 +34,40 @@ const Poke = ({ poke }) => {
           <div key={key.ability.name}>
             {key.ability.name} - {key.ability.url}
           </div>
-        );
+        )
       })}
+      <br />
+      <br />
+      <p>
+        <button onClick={getAllPoke}>Carregar todos</button>
+      </p>
+      {pokes &&
+        pokes.length &&
+        pokes.results.lenght &&
+        pokes.results.map((poke) => {
+          return <div key={poke.name}>{poke.name}</div>
+        })}
+
       <br />
       <button onClick={handleClick}>Voltar</button>
     </div>
-  );
+  )
 
-  return poke ? pokeHtml : "<>loading...</>";
-};
+  return poke ? pokeHtml : '<>loading...</>'
+}
 
-export const getStaticProps = async (ctx) => {
+export const getStaticProps = async () => {
   async function fetchPokeData() {
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
-    return response.json();
+    let response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+    return response.json()
   }
-  const poke = await fetchPokeData();
+  const poke = await fetchPokeData()
 
   return {
     props: {
-      poke,
-    },
-  };
-};
+      poke
+    }
+  }
+}
 
-export default Poke;
+export default Poke

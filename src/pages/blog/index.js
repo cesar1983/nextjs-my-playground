@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import posts from "../../posts.json";
-import Head from "next/head";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import posts from '../../posts.json'
+import Head from 'next/head'
 
 const Blog = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleClick = (e) => {
-    e.preventDefault();
-    router.push("/");
-  };
+    e.preventDefault()
+    router.push('/')
+  }
 
   // const paths = [];
   // for (var index in posts) {
@@ -36,17 +36,17 @@ const Blog = () => {
         {Object.entries(posts).map((value, index) => {
           return (
             <li key={index}>
-              <Link href="/blog/[slug]" as={"/blog/" + value[0]}>
+              <Link href="/blog/[slug]" as={'/blog/' + value[0]}>
                 <a>{value[1].title}</a>
               </Link>
             </li>
-          );
+          )
         })}
       </ul>
       <br />
       <button onClick={handleClick}>Voltar</button>
     </div>
-  );
-};
+  )
+}
 
-export default Blog;
+export default Blog

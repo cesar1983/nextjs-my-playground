@@ -1,15 +1,15 @@
-import "../../styles/globals.css";
+import '../../styles/globals.css'
 
-import { DefaultSeo } from "next-seo";
-import SEO from "../../next-seo.config";
+import { DefaultSeo } from 'next-seo'
+import SEO from '../../next-seo.config'
 
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from 'styled-components'
 
 const theme = {
   colors: {
-    primary: "#0070f3",
-  },
-};
+    primary: '#0070f3'
+  }
+}
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       <DefaultSeo {...SEO} />
       <Component {...pageProps} />
     </ThemeProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

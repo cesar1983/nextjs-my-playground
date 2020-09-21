@@ -1,14 +1,14 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Users = () => {
-  const router = useRouter();
-  const userId = router.query.userId;
+  const router = useRouter()
+  const userId = router.query.userId
 
   return (
     <>
       <div>{`User Id : ${userId}`}</div>
-      {userId !== "99" && (
+      {userId !== '99' && (
         <Link href="/users/[userId]" as="/users/99">
           <a>See the user 99 </a>
         </Link>
@@ -18,7 +18,7 @@ const Users = () => {
         <a>Home</a>
       </Link>
     </>
-  );
-};
+  )
+}
 
-export default Users;
+export default Users

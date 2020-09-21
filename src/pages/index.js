@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { MyLink } from "../components/Link";
-import styles from "../../styles/Home.module.css";
-import JsonSchema from "../components/JsonSchema";
+import Head from 'next/head'
+import { MyLink } from '../components/Link'
+import styles from '../../styles/Home.module.css'
+import JsonSchema from '../components/JsonSchema'
 
 export default function Home() {
   return (
@@ -41,5 +41,5 @@ export default function Home() {
 
       <JsonSchema />
     </div>
-  );
+  )
 }
