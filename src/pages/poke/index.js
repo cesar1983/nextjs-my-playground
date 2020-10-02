@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-
-import * as S from './styles.js'
+import Heading from '../../components/Heading'
 
 const Poke = ({ poke }) => {
   const [pokes, setPokes] = useState([])
@@ -15,13 +14,15 @@ const Poke = ({ poke }) => {
 
   const getAllPoke = async () => {
     let response = await fetch('https://pokeapi.co/api/v2/pokemon')
-    let pokes = response.json()
-    setPokes(pokes)
+    let data = await response.json()
+    let allPokes = data.results
+    console.log(allPokes)
+    setPokes(allPokes)
   }
 
   const pokeHtml = (
     <div>
-      <S.Title>Poke Info</S.Title>
+      <Heading>Poke Info</Heading>
       <dl>
         <dd>Name</dd>
         <dd>{poke?.name}</dd>
@@ -41,12 +42,9 @@ const Poke = ({ poke }) => {
       <p>
         <button onClick={getAllPoke}>Carregar todos</button>
       </p>
-      {pokes &&
-        pokes.length &&
-        pokes.results.lenght &&
-        pokes.results.map((poke) => {
-          return <div key={poke.name}>{poke.name}</div>
-        })}
+      {pokes.map((pk) => {
+        return <div key={pk.name}>{pk.name}</div>
+      })}
 
       <br />
       <button onClick={handleClick}>Voltar</button>
