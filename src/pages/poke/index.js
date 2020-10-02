@@ -24,7 +24,7 @@ const Poke = ({ poke }) => {
     <div>
       <Heading>Poke Info</Heading>
       <dl>
-        <dd>Name</dd>
+        <dd>Name Poke</dd>
         <dd>{poke?.name}</dd>
         <dd>Weight</dd>
         <dd>{poke?.weight}</dd>
